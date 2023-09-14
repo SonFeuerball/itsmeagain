@@ -1,6 +1,7 @@
 <section class="animals-view">
   <div class="animals-container">
-    <button mat-stroked-button class="action-more" (click)="loadMore()" [disabled]="isLoading">Moar</button>
+    <button mat-stroked-button class="action-more" color="accent" (click)="loadMore()"
+      [disabled]="isLoading">Moar</button>
     <mat-divider></mat-divider>
     <mat-progress-bar mode="indeterminate" color="accent"
       [ngStyle]="{'visibility' : isLoading ? 'visible' : 'hidden'}"></mat-progress-bar>
