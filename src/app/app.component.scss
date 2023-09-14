@@ -8,6 +8,10 @@
 
 mat-toolbar {
   padding: 0px;
+
+  .title {
+    margin-left: 16px;
+  }
 }
 
 .mat-sidenav-container {
@@ -16,6 +20,10 @@ mat-toolbar {
 
   mat-sidenav {
     width: 250px;
+
+    .greeting {
+      padding: 16px;
+    }
   }
 }
 

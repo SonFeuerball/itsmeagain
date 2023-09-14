@@ -1,19 +1,15 @@
 <section class="animals-view">
   <div class="animals-container">
-    <div class="animals-select">
-      <mat-form-field>
-        <mat-label>What would you like to see?</mat-label>
-        <mat-select disableRipple>
-          <mat-option value="1">Cats</mat-option>
-          <mat-option value="2">Dogs</mat-option>
-          <mat-option value="3">3</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+    <button mat-stroked-button class="action-more" (click)="loadMore()" [disabled]="isLoading">Moar</button>
     <mat-divider></mat-divider>
-    <mat-grid-list cols="2" rowHeight="25%">
+    <mat-progress-bar mode="indeterminate" color="accent"
+      [ngStyle]="{'visibility' : isLoading ? 'visible' : 'hidden'}"></mat-progress-bar>
+    <mat-grid-list cols="2" rowHeight="1:1" gutterSize="48px"
+      [ngStyle]="{'visibility' : !isLoading ? 'visible' : 'hidden'}">
       <mat-grid-tile *ngFor="let cat of cats">
-        <img src={{cat.url}}>
+        <mat-card>
+          <img mat-card-image src={{cat.url}}>
+        </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

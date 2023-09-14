@@ -2,21 +2,21 @@
   <button mat-flat-button class="sidenav-toggle" (click)="sidenav.toggle()">
     <mat-icon class="sidenav-icon">menu</mat-icon>
   </button>
+  <span class="title">ich bin hackybacky</span>
 </mat-toolbar>
 
 <main>
   <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="over" [(opened)]="opened">
-      Menu
+    <mat-sidenav #sidenav mode="over" [(opened)]="opened" autoFocus="false">
+      <div class="greeting">
+        Hey :)
+      </div>
       <mat-nav-list>
-        <mat-list-item routerLink="/leftright" routerLinkActive="active" (click)="sidenav.toggle()">Stuff
-          1</mat-list-item>
-        <mat-list-item routerLink="/animals" (click)="sidenav.toggle()">Stuff 2</mat-list-item>
-        <mat-list-item (click)="sidenav.toggle()">Stuff 3</mat-list-item>
+        <mat-list-item routerLink="/animals" routerLinkActive="active"
+          (click)="sidenav.toggle()">Animals</mat-list-item>
+        <mat-list-item routerLink="/leftright" (click)="sidenav.toggle()">WIP</mat-list-item>
       </mat-nav-list>
-
     </mat-sidenav>
-
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>

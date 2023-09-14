@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Cat, ConfigService } from 'src/app/config/config.service';
 
 @Component({
@@ -9,27 +10,31 @@ import { Cat, ConfigService } from 'src/app/config/config.service';
 export class AnimalsComponent {
   cats: Cat[] = [];
 
+  isLoading: boolean = false;
+
+  private loadCatsSub: Subscription = new Subscription;
+
   constructor(private service: ConfigService) {
 
-    this.service._getCats().subscribe((data) => {
-      console.log(data)
-      this.cats = data
-      console.log(this.cats)
-    }
-    )
-
-    //this._test()
-    //console.log(this.cats)
   }
 
+  ngOnInit() {
+    this.isLoading = false;
+    this.loadMore()
+  }
 
-  _test() {
-    //console.log(this.service._getCats().subscribe())
-    this.service._getCats().subscribe((data) => {
-      //console.log(data)
+  loadMore() {
+    this.isLoading = true;
+    this.loadCatsSub = this.service._getCats().subscribe((data) => {
       this.cats = data
+      this.isLoading = false;
     }
     )
+
+  }
+
+  ngOnDestroy(): void {
+    this.loadCatsSub.unsubscribe();
   }
 
 }
